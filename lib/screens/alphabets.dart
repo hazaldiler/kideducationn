@@ -37,8 +37,8 @@ class AlphabetsScreen extends StatefulWidget {
 
 class _AlphabetsScreenState extends State<AlphabetsScreen> {
   late Future<List<AlphabetEntity>> _alphabetsFuture;
-  late FlutterSoundPlayer _soundPlayer;
-  late int _selectedIndex;
+  FlutterSoundPlayer _soundPlayer = new FlutterSoundPlayer();
+  int? _selectedIndex;
 
   @override
   void initState() {
@@ -51,7 +51,7 @@ class _AlphabetsScreenState extends State<AlphabetsScreen> {
   void _playAudio(String audioPath) async {
     // Load a local audio file and get it as a buffer
     Uint8List buffer = (await rootBundle.load(audioPath)).buffer.asUint8List();
-    await _soundPlayer.startPlayer();
+    await _soundPlayer.startPlayer(fromDataBuffer: buffer);
   }
 
   @override
@@ -67,7 +67,7 @@ class _AlphabetsScreenState extends State<AlphabetsScreen> {
           Expanded(
             child: FutureBuilder(
               future: _alphabetsFuture,
-              builder: (context, dynamic snapshot) {
+              builder: (context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.hasData) {
                   return MediaQuery.removePadding(
                     context: context,
@@ -77,7 +77,7 @@ class _AlphabetsScreenState extends State<AlphabetsScreen> {
                         crossAxisCount: 2,
                         crossAxisSpacing: 20.0,
                       ),
-                      //itemCount: snapshot.data.length,
+                      itemCount: snapshot.data.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
                           padding: index % 2 == 0
@@ -111,9 +111,9 @@ class _AlphabetsScreenState extends State<AlphabetsScreen> {
     );
   }
 
-  @override
+  /* @override
   void dispose() {
-    _soundPlayer.isPlaying;
+    _soundPlayer.stopPlayer();
     super.dispose();
-  }
+  }*/
 }

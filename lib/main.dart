@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_ornek/screens/LoginPage.dart';
+import 'package:firebase_ornek/constant.dart';
+import 'package:firebase_ornek/screens/home.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -15,10 +16,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LoginPage(),
+          scaffoldBackgroundColor: kBackgroundColor,
+          fontFamily: "YujiHentaiganaAkebono",
+          textTheme: TextTheme(
+            bodyText1: TextStyle(color: kBodyTextColor),
+          )),
+      home: HomeScreen(),
     );
   }
 }

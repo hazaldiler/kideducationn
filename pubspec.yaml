@@ -55,10 +55,18 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
  # uses-material-design: true
-
+  uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/data/
     - assets/audio/
+    - assets/icons/
     - assets/images/
+
+  fonts:
+    - family: YujiHentaiganaAkebono
+      fonts:
+        - asset: assets/fonts/YujiHentaiganaAkebono-Regular.ttf
+          weight: 700
+
 

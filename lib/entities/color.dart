@@ -1,7 +1,7 @@
 class ColorEntity {
-  late String code;
-  late String name;
-  late String audio;
+  String code;
+  String name;
+  String audio;
 
   ColorEntity({
     required this.code,

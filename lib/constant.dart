@@ -15,7 +15,7 @@ final kActiveShadowColor = Color(0xFF4056C6).withOpacity(.15);
 // Text Style
 const kHeadingTextStyle = TextStyle(
   color: Colors.white,
-  fontSize: 64,
+  fontSize: 60,
   fontWeight: FontWeight.w700,
   letterSpacing: 4.0,
 );
@@ -29,5 +29,5 @@ const kTitleTextstyle = TextStyle(
   color: kTitleTextColor,
   fontSize: 32,
   fontWeight: FontWeight.w700,
-  fontFamily: 'CabinSketch',
+  fontFamily: 'YujiHentaiganaAkebono',
 );

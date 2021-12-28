@@ -54,7 +54,7 @@ class TileCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: textColor,
-                  fontFamily: 'CabinSketch',
+                  fontFamily: 'YujiHentaiganaAkebono',
                   fontWeight: FontWeight.w700,
                 ),
                 softWrap: false,

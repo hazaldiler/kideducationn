@@ -66,7 +66,7 @@ class CategoryCard extends StatelessWidget {
             child: Text(
               title,
               style: kHeadingTextStyle.copyWith(
-                fontSize: 90.0,
+                fontSize: 80.0,
                 letterSpacing: 4.0,
               ),
               softWrap: false,

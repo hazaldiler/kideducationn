@@ -35,9 +35,9 @@ class CountingScreen extends StatefulWidget {
 }
 
 class _CountingScreenState extends State<CountingScreen> {
-  late Future<List<NumberEntity>> _numbersFuture;
-  late FlutterSoundPlayer _soundPlayer;
-  late int _selectedIndex;
+  Future<List<NumberEntity>>? _numbersFuture;
+  FlutterSoundPlayer _soundPlayer = new FlutterSoundPlayer();
+  int? _selectedIndex;
 
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _CountingScreenState extends State<CountingScreen> {
   void _playAudio(String audioPath) async {
     // Load a local audio file and get it as a buffer
     Uint8List buffer = (await rootBundle.load(audioPath)).buffer.asUint8List();
-    await _soundPlayer.startPlayer();
+    await _soundPlayer.startPlayer(fromDataBuffer: buffer);
   }
 
   @override
@@ -67,7 +67,7 @@ class _CountingScreenState extends State<CountingScreen> {
           Expanded(
             child: FutureBuilder(
               future: _numbersFuture,
-              builder: (context, dynamic snapshot) {
+              builder: (context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.hasData) {
                   return MediaQuery.removePadding(
                     context: context,
@@ -111,9 +111,9 @@ class _CountingScreenState extends State<CountingScreen> {
     );
   }
 
-  @override
+  /* @override
   void dispose() {
-    _soundPlayer.isPlaying;
+    _soundPlayer.resumePlayer();
     super.dispose();
-  }
+  }*/
 }

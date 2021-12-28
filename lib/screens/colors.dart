@@ -37,9 +37,9 @@ class ColorsScreen extends StatefulWidget {
 }
 
 class _ColorsScreenState extends State<ColorsScreen> {
-  late Future<List<ColorEntity>> _colorsFuture;
-  late FlutterSoundPlayer _soundPlayer;
-  late int _selectedIndex;
+  Future<List<ColorEntity>>? _colorsFuture;
+  FlutterSoundPlayer? _soundPlayer;
+  int? _selectedIndex;
 
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
   void _playAudio(String audioPath) async {
     // Load a local audio file and get it as a buffer
     Uint8List buffer = (await rootBundle.load(audioPath)).buffer.asUint8List();
-    await _soundPlayer.startPlayer();
+    await _soundPlayer!.startPlayer(fromDataBuffer: buffer);
   }
 
   @override
@@ -68,7 +68,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
           Expanded(
             child: FutureBuilder(
               future: _colorsFuture,
-              builder: (context, dynamic snapshot) {
+              builder: (context, AsyncSnapshot<dynamic> snapshot) {
                 if (snapshot.hasData) {
                   return MediaQuery.removePadding(
                     context: context,
@@ -99,7 +99,7 @@ class _ColorsScreenState extends State<ColorsScreen> {
                                 _selectedIndex = index;
                               });
 
-                              _playAudio(snapshot.data![index].audio);
+                              _playAudio(snapshot.data[index].audio);
                             },
                           ),
                         );
@@ -119,9 +119,10 @@ class _ColorsScreenState extends State<ColorsScreen> {
     );
   }
 
-  @override
+/*@override
   void dispose() {
-    _soundPlayer.isPlaying;
+    _soundPlayer.stopPlayer();
     super.dispose();
   }
+}*/
 }

@@ -30,10 +30,10 @@ class PageHeader extends StatelessWidget {
               secondaryColor,
             ],
           ),
-          /*image: DecorationImage(
+          image: DecorationImage(
             image: AssetImage("assets/images/bg-stars.png"),
             fit: BoxFit.cover,
-          ),*/
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

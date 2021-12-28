@@ -1,6 +1,6 @@
 class NumberEntity {
-  late String text;
-  late String audio;
+  String text;
+  String audio;
 
   NumberEntity({
     required this.text,
